@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
+using MyToDo.Shared;
 
 namespace MyToDo.Api.Context.UnitOfWork
 {
@@ -60,7 +61,7 @@ namespace MyToDo.Api.Context.UnitOfWork
         /// <param name="include">A function to include navigation properties</param>
         /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
         /// <param name="ignoreQueryFilters">Ignore query filters</param>
-        /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
+        /// <returns>An <see cref="IPagedList{T}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
         /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
         public IQueryable<TEntity> GetAll(
             Expression<Func<TEntity, bool>> predicate = null,

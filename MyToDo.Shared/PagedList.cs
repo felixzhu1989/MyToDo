@@ -91,7 +91,7 @@ namespace MyToDo.Shared
         /// <summary>
         /// Initializes a new instance of the <see cref="PagedList{T}" /> class.
         /// </summary>
-        internal PagedList() => Items = new T[0];
+        public PagedList() => Items = new T[0];
     }
 
 

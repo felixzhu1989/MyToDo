@@ -8,8 +8,10 @@
     ".NETCoreApp,Version=v6.0": {
       "MyToDo.Api/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore.AutoHistory": "5.0.8",
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.3",
+          "MyToDo.Shared": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -61,6 +63,17 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/6.0.3": {},
+      "Microsoft.EntityFrameworkCore.AutoHistory/5.0.8": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.3"
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.EntityFrameworkCore.AutoHistory.dll": {
+            "assemblyVersion": "5.0.8.0",
+            "fileVersion": "5.0.8.0"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Design/6.0.3": {
         "dependencies": {
           "Humanizer.Core": "2.8.26",
@@ -361,6 +374,11 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "6.0.0"
         }
+      },
+      "MyToDo.Shared/1.0.0": {
+        "runtime": {
+          "MyToDo.Shared.dll": {}
+        }
       }
     }
   },
@@ -404,6 +422,13 @@
       "sha512": "sha512-Ld9HyVABYor3Tq43/sG2JERL94UnDHJPg5PwpkCW4CWsf/CbxHetdecv+bCXA/Hg4q+44sov0GVl4Ywjk4PnyA==",
       "path": "microsoft.entityframeworkcore.analyzers/6.0.3",
       "hashPath": "microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.AutoHistory/5.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eKRJdOSfKgYqTSW+rr71ZBY91YLU0ic7+ft3jptQSpl3Jffx8E8AsRV9ke72jIBEyDq3i004HUE5lYOALVwB+A==",
+      "path": "microsoft.entityframeworkcore.autohistory/5.0.8",
+      "hashPath": "microsoft.entityframeworkcore.autohistory.5.0.8.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Design/6.0.3": {
       "type": "package",
@@ -628,6 +653,11 @@
       "sha512": "sha512-zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
       "path": "system.text.json/6.0.0",
       "hashPath": "system.text.json.6.0.0.nupkg.sha512"
+    },
+    "MyToDo.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
