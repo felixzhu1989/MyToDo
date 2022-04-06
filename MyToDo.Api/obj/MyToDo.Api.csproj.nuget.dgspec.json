@@ -48,6 +48,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.AutoHistory": {
               "target": "Package",
               "version": "[5.0.8, )"

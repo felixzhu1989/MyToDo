@@ -55,3 +55,4 @@ D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\runtimes\win-x86\native\e_sql
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.AutoHistory.dll
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Shared.dll
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Shared.pdb
+D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\AutoMapper.dll

@@ -1,7 +1,9 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using MyToDo.Api.Context;
 using MyToDo.Api.Context.Repository;
 using MyToDo.Api.Context.UnitOfWork;
+using MyToDo.Api.Extensions;
 using MyToDo.Api.Service;
 
 
@@ -19,6 +21,14 @@ builder.Services.AddDbContext<MyToDoContext>(options =>
     .AddCustomRepository<Memo,MemoRepository>();
 
 builder.Services.AddTransient<IToDoService, ToDoService>();
+builder.Services.AddTransient<IMemoService, MemoService>();
+
+//ÅäÖÃÌí¼ÓAutoMapper
+var autoMapperConfig = new MapperConfiguration(config =>
+{
+    config.AddProfile(new AutoMapperProfile());
+});
+builder.Services.AddSingleton(autoMapperConfig.CreateMapper());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

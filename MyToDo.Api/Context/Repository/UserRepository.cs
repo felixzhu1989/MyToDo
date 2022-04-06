@@ -1,13 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MyToDo.Api.Context.UnitOfWork;
+﻿using MyToDo.Api.Context.UnitOfWork;
 
-namespace MyToDo.Api.Context.Repository
+namespace MyToDo.Api.Context.Repository;
+
+public class UserRepository:Repository<User>,IRepository<User>
 {
-    public class UserRepository:Repository<User>,IRepository<User>
+    public UserRepository(MyToDoContext dbContext) : base(dbContext)
     {
-        public UserRepository(MyToDoContext dbContext) : base(dbContext)
-        {
 
-        }
     }
 }
