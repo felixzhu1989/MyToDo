@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyToDo.Api.Context;
 using MyToDo.Api.Context.UnitOfWork;
+using MyToDo.Shared;
 using MyToDo.Shared.Dtos;
 using MyToDo.Shared.Parameters;
 

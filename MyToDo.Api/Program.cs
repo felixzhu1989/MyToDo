@@ -22,6 +22,7 @@ builder.Services.AddDbContext<MyToDoContext>(options =>
 
 builder.Services.AddTransient<IToDoService, ToDoService>();
 builder.Services.AddTransient<IMemoService, MemoService>();
+builder.Services.AddTransient<ILoginService, LoginService>();
 
 //ÅäÖÃÌí¼ÓAutoMapper
 var autoMapperConfig = new MapperConfiguration(config =>

@@ -1,4 +1,4 @@
-﻿namespace MyToDo.Api.Service;
+﻿namespace MyToDo.Shared;
 
 public class ApiResponse
 {
