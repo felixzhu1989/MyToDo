@@ -1,8 +1,7 @@
 ﻿using MyToDo.Shared.Dtos;
 
-namespace MyToDo.Api.Service
+namespace MyToDo.Api.Service;
+
+public interface IMemoService:IBaseService<MemoDto>
 {
-    public interface IMemoService:IBaseService<MemoDto>
-    {
-    }
 }

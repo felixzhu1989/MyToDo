@@ -15,7 +15,12 @@
       "ProjectGuid": "bb232a07-3122-4b95-905c-59f298845d9b",
       "DisplayName": "MyToDo.Shared",
       "ColorIndex": 1
+    },
+    "b6d75858-0683-40c4-be3d-f8a330c5f581": {
+      "ProjectGuid": "b6d75858-0683-40c4-be3d-f8a330c5f581",
+      "DisplayName": "MyToDo",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
