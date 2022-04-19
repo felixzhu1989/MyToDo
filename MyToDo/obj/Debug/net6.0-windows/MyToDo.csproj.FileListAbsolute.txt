@@ -1,4 +1,3 @@
-D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo.csproj.AssemblyReference.cache
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\App.g.cs
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo_MarkupCompile.cache
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo_MarkupCompile.lref
@@ -28,3 +27,14 @@ D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo.pdb
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo.genruntimeconfig.cache
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MainView.g.cs
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MainView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\IndexView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MemoView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\SettingsView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\ToDoView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\IndexView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MemoView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\SettingsView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\ToDoView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo.csproj.AssemblyReference.cache
+D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.Shared.dll
+D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.Shared.pdb

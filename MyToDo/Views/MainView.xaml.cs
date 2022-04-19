@@ -25,5 +25,9 @@ public partial class MainView : Window
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         };
         BtnClose.Click += (s, e) => { Close(); };
+        MenuBar.SelectionChanged += (s, e) =>
+        {
+            DrawerHost.IsLeftDrawerOpen = false;
+        };
     }
 }

@@ -206,6 +206,16 @@
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
+      },
+      "MyToDo.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MyToDo.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MyToDo.Shared.dll": {}
+        }
       }
     }
   },
@@ -965,11 +975,17 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "MyToDo.Shared/1.0.0": {
+      "type": "project",
+      "path": "../MyToDo.Shared/MyToDo.Shared.csproj",
+      "msbuildProject": "../MyToDo.Shared/MyToDo.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "MaterialDesignThemes >= 4.4.0",
+      "MyToDo.Shared >= 1.0.0",
       "Prism.DryIoc >= 8.1.97"
     ]
   },
@@ -1004,7 +1020,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj": {
+              "projectPath": "D:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

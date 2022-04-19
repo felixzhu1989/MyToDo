@@ -14,4 +14,7 @@ public class BaseDto:INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+    public DateTime CreateDate { get; set; }
+    public DateTime UpdateDate { get; set; }
 }
