@@ -5,7 +5,7 @@ using Prism.Mvvm;
 
 namespace MyToDo.ViewModels;
 
-internal class ToDoViewModel:BindableBase
+public class ToDoViewModel:BindableBase
 {
     public DelegateCommand AddCommand { get;}
     private bool isRightDrawerOpen;

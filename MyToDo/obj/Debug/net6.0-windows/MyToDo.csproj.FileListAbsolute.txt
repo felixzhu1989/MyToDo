@@ -38,3 +38,8 @@ D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\ToDoView.baml
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo.csproj.AssemblyReference.cache
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.Shared.dll
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.Shared.pdb
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\SkinView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\SkinView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.baml

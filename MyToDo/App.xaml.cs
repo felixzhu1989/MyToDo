@@ -17,6 +17,12 @@ public partial class App : PrismApplication
     }
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>(); containerRegistry.RegisterForNavigation<ToDoView, ToDoViewModel>(); containerRegistry.RegisterForNavigation<MemoView, MemoViewModel>(); containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
+        
+        containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>(); 
+        containerRegistry.RegisterForNavigation<ToDoView, ToDoViewModel>(); 
+        containerRegistry.RegisterForNavigation<MemoView, MemoViewModel>(); 
+        containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
+        containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
+        containerRegistry.RegisterForNavigation<AboutView>();
     }
 }
