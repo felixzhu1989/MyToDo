@@ -24,7 +24,10 @@ public class MemoService:IMemoService
     {
         try
         {
-            var memos = await _repository.GetPagedListAsync(predicate: t => string.IsNullOrWhiteSpace(parameter.Search) ? true : t.Title.Equals(parameter.Search), pageIndex: parameter.PageIndex, pageSize: parameter.PageSize, orderBy: source => source.OrderByDescending(x => x.CreateDate));
+            var memos = await _repository.GetPagedListAsync(t => string.IsNullOrWhiteSpace(parameter.Search) || t.Title.Equals(parameter.Search), 
+                pageIndex: parameter.PageIndex, 
+                pageSize: parameter.PageSize, 
+                orderBy: source => source.OrderByDescending(x => x.CreateDate));
             return new ApiResponse(true, memos);
         }
         catch (Exception e)

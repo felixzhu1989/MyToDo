@@ -6,7 +6,6 @@ using MyToDo.Api.Context.UnitOfWork;
 using MyToDo.Api.Extensions;
 using MyToDo.Api.Service;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

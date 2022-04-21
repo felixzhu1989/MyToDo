@@ -10,12 +10,12 @@ namespace MyToDo.Api.Service;
 /// <summary>
 /// 待办事项服务实现
 /// </summary>
-public class ToDoService:IToDoService
+public class ToDoService : IToDoService
 {
     private readonly IUnitOfWork _work;
     private readonly IMapper _mapper;
     private readonly IRepository<ToDo> _repository;
-    public ToDoService(IUnitOfWork work,IMapper mapper)
+    public ToDoService(IUnitOfWork work, IMapper mapper)
     {
         _work = work;
         _mapper = mapper;
@@ -25,7 +25,11 @@ public class ToDoService:IToDoService
     {
         try
         {
-            var todos = await _repository.GetPagedListAsync(predicate:t=>string.IsNullOrWhiteSpace(parameter.Search)?true:t.Title.Equals(parameter.Search),pageIndex:parameter.PageIndex,pageSize:parameter.PageSize,orderBy:source=>source.OrderByDescending(x=>x.CreateDate));
+            var todos = await _repository.GetPagedListAsync(
+                t => string.IsNullOrWhiteSpace(parameter.Search) || t.Title.Equals(parameter.Search), 
+                pageIndex: parameter.PageIndex, 
+                pageSize: parameter.PageSize, 
+                orderBy: source => source.OrderByDescending(x => x.CreateDate));
             return new ApiResponse(true, todos);
         }
         catch (Exception e)
@@ -38,7 +42,7 @@ public class ToDoService:IToDoService
     {
         try
         {
-            var todo = await _repository.GetFirstOrDefaultAsync(predicate:t=>t.Id.Equals(id));
+            var todo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
             return new ApiResponse(true, todo);
         }
         catch (Exception e)
@@ -88,7 +92,7 @@ public class ToDoService:IToDoService
     {
         try
         {
-            var todo= await _repository.GetFirstOrDefaultAsync(predicate:t=>t.Id.Equals(id));
+            var todo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
             _repository.Delete(todo);
             if (await _work.SaveChangesAsync() > 0)
                 return new ApiResponse(true, todo);

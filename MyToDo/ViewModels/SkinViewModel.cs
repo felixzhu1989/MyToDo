@@ -44,9 +44,7 @@ public class SkinViewModel:BindableBase
     {
         var paletteHelper = new PaletteHelper();
         ITheme theme = paletteHelper.GetTheme();
-
         modificationAction?.Invoke(theme);
-
         paletteHelper.SetTheme(theme);
     }
 }

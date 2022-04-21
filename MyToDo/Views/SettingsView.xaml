@@ -55,8 +55,6 @@
             <ContentControl Grid.Column="1"
                             prism:RegionManager.RegionName="{x:Static extensions:PrismManager.SettingsViewRegionName}"
                             Margin="10,0" />
-
         </Grid>
-
     </Grid>
 </UserControl>

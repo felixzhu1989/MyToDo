@@ -10,22 +10,19 @@
     <StackPanel>
         <TextBlock Text="关于作者"
                    FontSize="26" />
-        <StackPanel Orientation="Horizontal" Margin="0,5">
+        <StackPanel Orientation="Horizontal"
+                    Margin="0,5">
             <TextBlock Text="B站:" />
             <TextBlock>
                 <Hyperlink NavigateUri="https://space.bilibili.com/6256851/video"
-                           RequestNavigate="Hyperlink_RequestNavigate">
-                    HongfengZhu
-                </Hyperlink>
+                           RequestNavigate="Hyperlink_RequestNavigate">HongfengZhu</Hyperlink>
             </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Github:" />
             <TextBlock>
                 <Hyperlink NavigateUri="https://github.com/felixzhu1989"
-                           RequestNavigate="Hyperlink_RequestNavigate">
-                    felixzhu1989
-                </Hyperlink>
+                           RequestNavigate="Hyperlink_RequestNavigate">felixzhu1989</Hyperlink>
             </TextBlock>
         </StackPanel>
     </StackPanel>
