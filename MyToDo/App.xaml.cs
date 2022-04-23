@@ -19,12 +19,13 @@ public partial class App : PrismApplication
     }
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        //注册prism区域跳转导航页面
         containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>(); 
         containerRegistry.RegisterForNavigation<ToDoView, ToDoViewModel>(); 
         containerRegistry.RegisterForNavigation<MemoView, MemoViewModel>(); 
         containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
         containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
-        containerRegistry.RegisterForNavigation<AboutView>();
+        containerRegistry.RegisterForNavigation<AboutView>();//没有ViewModel的情形
 
         //获取容器，然后注册HttpRestClient，并给构造函数设置默认值
         containerRegistry.GetContainer()
@@ -32,6 +33,7 @@ public partial class App : PrismApplication
         containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5263/", serviceKey: "apiUrl");
         //注册服务
         containerRegistry.Register<IToDoService,ToDoService>();
+        containerRegistry.Register<IMemoService,MemoService>();
 
     }
 }
