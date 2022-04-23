@@ -43,3 +43,5 @@ D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\GeneratedInternalTypeHelp
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\SkinView.baml
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.g.cs
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.baml
+D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\RestSharp.dll

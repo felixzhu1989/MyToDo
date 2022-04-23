@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using MyToDo.Service;
 using MyToDo.Shared.Dtos;
+using MyToDo.Shared.Parameters;
 using Prism.Commands;
 using Prism.Mvvm;
 
@@ -7,6 +9,7 @@ namespace MyToDo.ViewModels;
 
 public class ToDoViewModel:BindableBase
 {
+    
     public DelegateCommand AddCommand { get;}
     private bool isRightDrawerOpen;
     /// <summary>
@@ -25,8 +28,10 @@ public class ToDoViewModel:BindableBase
         set { toDoDtos = value; RaisePropertyChanged();}
     }
 
-    public ToDoViewModel()
+    private readonly IToDoService _service;
+    public ToDoViewModel(IToDoService service)
     {
+        _service = service;
         ToDoDtos=new ObservableCollection<ToDoDto>();
         CreateToDoList();
         AddCommand = new DelegateCommand(Add);
@@ -40,11 +45,24 @@ public class ToDoViewModel:BindableBase
         IsRightDrawerOpen=true;
     }
 
-    private void CreateToDoList()
+    private async void CreateToDoList()
     {
-        for (int i = 0; i < 10; i++)
+        //模拟待办数据
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    ToDoDtos.Add(new ToDoDto{Title = $"待办标题{i}",Content = "待办事项..."});
+        //}
+       var toDoResult=await _service.GetAllAsync(new QueryParameter
         {
-            ToDoDtos.Add(new ToDoDto{Title = $"待办标题{i}",Content = "待办事项..."});
-        }
+            PageIndex = 0,
+            PageSize = 100
+        });
+       if (toDoResult.Status)
+       {
+           foreach (var item in toDoResult.Result.Items)
+           {
+               ToDoDtos.Add(item);
+           }
+       }
     }
 }

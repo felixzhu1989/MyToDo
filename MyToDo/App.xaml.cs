@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using DryIoc;
+using MyToDo.Service;
 using MyToDo.ViewModels;
 using MyToDo.Views;
 using Prism.DryIoc;
@@ -23,5 +25,13 @@ public partial class App : PrismApplication
         containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
         containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
         containerRegistry.RegisterForNavigation<AboutView>();
+
+        //获取容器，然后注册HttpRestClient，并给构造函数设置默认值
+        containerRegistry.GetContainer()
+            .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "apiUrl"));
+        containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5263/", serviceKey: "apiUrl");
+        //注册服务
+        containerRegistry.Register<IToDoService,ToDoService>();
+
     }
 }
