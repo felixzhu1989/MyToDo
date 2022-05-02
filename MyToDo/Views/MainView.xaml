@@ -22,9 +22,10 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:extensions="clr-namespace:MyToDo.Extensions"
-        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors">
+        xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors">
 
-    <materialDesign:DialogHost Identifier="RootDialog"
+    <materialDesign:DialogHost x:Name="DialogHost"
+                               Identifier="RootDialog"
                                DialogTheme="Inherit"
                                SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
 
@@ -50,12 +51,12 @@
                     <ListBox  x:Name="MenuBar"
                               ItemsSource="{Binding MenuBars}"
                               ItemContainerStyle="{StaticResource MyListBoxItemStyle}">
-                        <behaviors:Interaction.Triggers>
-                            <behaviors:EventTrigger EventName="SelectionChanged">
-                                <behaviors:InvokeCommandAction Command="{Binding NavigateCommand}"
+                        <behavior:Interaction.Triggers>
+                            <behavior:EventTrigger EventName="SelectionChanged">
+                                <behavior:InvokeCommandAction Command="{Binding NavigateCommand}"
                                                                CommandParameter="{Binding ElementName=MenuBar,Path=SelectedItem}" />
-                            </behaviors:EventTrigger>
-                        </behaviors:Interaction.Triggers>
+                            </behavior:EventTrigger>
+                        </behavior:Interaction.Triggers>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal"

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyToDo.Api.Context;
 using MyToDo.Api.Service;
 using MyToDo.Shared;
 using MyToDo.Shared.Dtos;
@@ -22,6 +23,9 @@ public class TodoController:ControllerBase
 
     [HttpGet]
     public async Task<ApiResponse> GetAll([FromQuery] QueryParameter param) => await _service.GetAllAsync(param);
+
+    [HttpGet]
+    public async Task<ApiResponse> GetAllFilter([FromQuery] ToDoParameter param) => await _service.GetAllFilterAsync(param);
 
     [HttpPost]
     public async Task<ApiResponse> Add([FromBody]ToDoDto model) => await _service.AddAsync(model);

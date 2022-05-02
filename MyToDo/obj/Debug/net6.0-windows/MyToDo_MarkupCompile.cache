@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\CSharp\repos\MyToDo\MyToDo\App.xaml
-71520232045
+8270336459
 
-28184811525
-20450287477
-Views\AboutView.xaml;Views\IndexView.xaml;Views\MainView.xaml;Views\MemoView.xaml;Views\SettingsView.xaml;Views\SkinView.xaml;Views\ToDoView.xaml;
+321282348600
+2041251548079
+Views\AboutView.xaml;Views\IndexView.xaml;Views\MainView.xaml;Views\MemoView.xaml;Views\ProcessView.xaml;Views\SettingsView.xaml;Views\SkinView.xaml;Views\ToDoView.xaml;
 
-True
+False
 

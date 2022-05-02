@@ -22,7 +22,7 @@ public class HttpRestClient
         var request = new RestRequest(resource, baseRequest.Method);
         request.AddHeader("Content-Type", baseRequest.ContentType);
         //传递的参数
-        if (baseRequest.Parameter != null) request.AddParameter("param", JsonConvert.SerializeObject(baseRequest.Parameter), ParameterType.RequestBody);
+        if (baseRequest.Parameter != null) request.AddJsonBody(baseRequest.Parameter);
         var response = await _client.ExecuteAsync(request);
         return JsonConvert.DeserializeObject<ApiResponse>(response.Content!)!;
     }
@@ -32,7 +32,8 @@ public class HttpRestClient
         var request = new RestRequest(resource, baseRequest.Method);
         request.AddHeader("Content-Type", baseRequest.ContentType);
         //传递的参数
-        if (baseRequest.Parameter != null) request.AddParameter("param", JsonConvert.SerializeObject(baseRequest.Parameter), ParameterType.RequestBody);
+        if (baseRequest.Parameter != null) request.AddJsonBody(baseRequest.Parameter);
+
         var response = await _client.ExecuteAsync(request);
         return JsonConvert.DeserializeObject<ApiResponse<T>>(response.Content!)!;
     }

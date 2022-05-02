@@ -9,4 +9,5 @@ public class UpdateModel
 
 public class UpdateLoadingEvent:PubSubEvent<UpdateModel>
 {
+
 }

@@ -4,7 +4,6 @@ D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Api.exe
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Api.deps.json
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Api.runtimeconfig.json
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Api.dll
-D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\ref\MyToDo.Api.dll
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Api.pdb
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -56,3 +55,4 @@ D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Shared.dll
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\MyToDo.Shared.pdb
 D:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\AutoMapper.dll
+D:\CSharp\repos\MyToDo\MyToDo.Api\obj\Debug\net6.0\refint\MyToDo.Api.dll

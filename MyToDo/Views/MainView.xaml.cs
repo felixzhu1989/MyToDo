@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using MyToDo.Extensions;
+using Prism.Events;
 
 namespace MyToDo.Views;
 
@@ -8,9 +10,15 @@ namespace MyToDo.Views;
 /// </summary>
 public partial class MainView : Window
 {
-    public MainView()
+    public MainView(IEventAggregator aggregator)
     {
         InitializeComponent();
+        //注册等待消息窗口
+        aggregator.Register(arg =>
+        {
+            DialogHost.IsOpen = arg.IsOpen;
+            if (DialogHost.IsOpen) DialogHost.DialogContent = new ProcessView();
+        });
         ColorZone.MouseMove += (s, e) =>
         {
             if (e.LeftButton == MouseButtonState.Pressed) DragMove();

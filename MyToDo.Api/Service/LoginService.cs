@@ -23,13 +23,13 @@ public class LoginService:ILoginService
            var model= await _repository.GetFirstOrDefaultAsync(predicate: u =>
                 u.Account.Equals(account) && u.Password.Equals(password));
            if (model == null)
-               return new ApiResponse("账号或密码错误，请重试");
-           else return new ApiResponse(true, model);
+               return new ApiResponse{Message = "账号或密码错误，请重试" };
+           else return new ApiResponse{Result = model,Status = true};
 
         }
         catch (Exception e)
         {
-            return new ApiResponse(e.Message);
+            return new ApiResponse { Message = e.Message};
         }
     }
 
@@ -42,16 +42,16 @@ public class LoginService:ILoginService
             var dbUser = await _repository.GetFirstOrDefaultAsync(predicate: u =>
                 u.Account.Equals(model.Account));
             if (dbUser != null)
-                return new ApiResponse($"账号:{model.Account}已存在，请重新注册");
+                return new ApiResponse { Message = $"账号:{model.Account}已存在，请重新注册" };
             model.CreateDate=DateTime.Now;
             await _repository.InsertAsync(model);
             if(await _work.SaveChangesAsync()>0)
-                return new ApiResponse(true, model);
-            else return new ApiResponse("注册失败，请重新注册");
+                return new ApiResponse {Result = model,Status = true};
+            else return new ApiResponse{Message = "注册失败，请重新注册" };
         }
         catch (Exception e)
         {
-            return new ApiResponse($"注册失败，{e.Message}");
+            return new ApiResponse{Message = $"注册失败，{e.Message}" };
         }
     }
 }

@@ -5,7 +5,6 @@ D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.exe
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.deps.json
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.runtimeconfig.json
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.dll
-D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\ref\MyToDo.dll
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MyToDo.pdb
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\DryIoc.dll
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\MaterialDesignColors.dll
@@ -45,3 +44,6 @@ D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.g.cs
 D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\AboutView.baml
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 D:\CSharp\repos\MyToDo\MyToDo\bin\Debug\net6.0-windows\RestSharp.dll
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\ProcessView.g.cs
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\ProcessView.baml
+D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\refint\MyToDo.dll
