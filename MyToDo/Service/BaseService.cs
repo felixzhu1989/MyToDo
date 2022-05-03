@@ -37,14 +37,14 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
         return await _client.ExecuteAsync<TEntity>(request);
     }
 
-    public async Task<ApiResponse> DeleteAsync(int id)
+    public async Task<ApiResponse<TEntity>> DeleteAsync(int id)
     {
         BaseRequest request = new BaseRequest
         {
             Method = RestSharp.Method.Delete,
             Route = $"api/{_serviceName}/Delete?id={id}"
         };
-        return await _client.ExecuteAsync(request);
+        return await _client.ExecuteAsync<TEntity>(request);
     }
 
     public async Task<ApiResponse<TEntity>> GetFirstOrDefault(int id)

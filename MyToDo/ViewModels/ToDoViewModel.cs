@@ -56,7 +56,7 @@ public class ToDoViewModel : NavigationViewModel
     public int SelectedIndex
     {
         get => selectedIndex;
-        set { selectedIndex = value;RaisePropertyChanged(); }
+        set { selectedIndex = value; RaisePropertyChanged(); }
     }
 
 
@@ -69,7 +69,7 @@ public class ToDoViewModel : NavigationViewModel
         SelectedCommand = new DelegateCommand<ToDoDto>(Selected);
         DeleteCommand = new DelegateCommand<ToDoDto>(Delete);
     }
-    
+
     /// <summary>
     /// 各种执行方法
     /// </summary>
@@ -166,12 +166,12 @@ public class ToDoViewModel : NavigationViewModel
     /// <param name="obj"></param>
     private async void Delete(ToDoDto obj)
     {
-       var deleteResult=await _service.DeleteAsync(obj.Id);
-       if (deleteResult.Status)
-       {
-          var model= ToDoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
-          if (model != null) ToDoDtos.Remove(model);
-       }
+        var deleteResult = await _service.DeleteAsync(obj.Id);
+        if (deleteResult.Status)
+        {
+            var model = ToDoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
+            if (model != null) ToDoDtos.Remove(model);
+        }
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public class ToDoViewModel : NavigationViewModel
         //    ToDoDtos.Add(new ToDoDto{Title = $"待办标题{i}",Content = "待办事项..."});
         //}
         UpdateLoading(true);//打开等待窗口
-        int? status= SelectedIndex == 0 ? null : SelectedIndex == 1 ? 0 : 1;
+        int? status = SelectedIndex == 0 ? null : SelectedIndex == 1 ? 0 : 1;
         var toDoResult = await _service.GetAllFilterAsync(new ToDoParameter
         {
             PageIndex = 0,

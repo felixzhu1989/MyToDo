@@ -28,11 +28,11 @@ public class MemoService : IMemoService
                 pageIndex: parameter.PageIndex,
                 pageSize: parameter.PageSize,
                 orderBy: source => source.OrderByDescending(x => x.CreateDate));
-            return new ApiResponse { Result=memos, Status=true };
+            return new ApiResponse(true, memos);
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -41,11 +41,11 @@ public class MemoService : IMemoService
         try
         {
             var memo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
-            return new ApiResponse { Result=memo, Status=true };
+            return new ApiResponse(true, memo);
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message = e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -56,12 +56,12 @@ public class MemoService : IMemoService
             var memo = _mapper.Map<Memo>(model);
             await _repository.InsertAsync(memo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=memo, Status=true };
-            else return new ApiResponse { Message = "添加数据失败" };
+                return new ApiResponse(true, memo);
+            else return new ApiResponse("添加数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -77,12 +77,12 @@ public class MemoService : IMemoService
             memo.UpdateDate=DateTime.Now;
             _repository.Update(memo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=memo, Status=true };
-            else return new ApiResponse { Message = "更新数据失败" };
+                return new ApiResponse(true, memo);
+            else return new ApiResponse("更新数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -93,12 +93,12 @@ public class MemoService : IMemoService
             var memo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
             _repository.Delete(memo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=memo, Status=true };
-            else return new ApiResponse { Message = "删除数据失败" };
+                return new ApiResponse(true, memo);
+            else return new ApiResponse("删除数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 }

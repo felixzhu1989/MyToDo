@@ -30,11 +30,11 @@ public class ToDoService : IToDoService
                 pageIndex: parameter.PageIndex,
                 pageSize: parameter.PageSize,
                 orderBy: source => source.OrderByDescending(x => x.CreateDate));
-            return new ApiResponse { Result=todos, Status=true };
+            return new ApiResponse(true, todos);
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -43,11 +43,11 @@ public class ToDoService : IToDoService
         try
         {
             var todo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
-            return new ApiResponse { Result=todo, Status=true };
+            return new ApiResponse(true, todo);
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -58,12 +58,12 @@ public class ToDoService : IToDoService
             var todo = _mapper.Map<ToDo>(model);
             await _repository.InsertAsync(todo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=todo, Status=true };
-            else return new ApiResponse { Message = "添加数据失败" };
+                return new ApiResponse(true, todo);
+            else return new ApiResponse("添加数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -79,12 +79,12 @@ public class ToDoService : IToDoService
             todo.UpdateDate=DateTime.Now;
             _repository.Update(todo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=todo, Status=true };
-            else return new ApiResponse { Message = "更新数据失败" };
+                return new ApiResponse(true, todo);
+            else return new ApiResponse("更新数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -95,12 +95,12 @@ public class ToDoService : IToDoService
             var todo = await _repository.GetFirstOrDefaultAsync(predicate: t => t.Id.Equals(id));
             _repository.Delete(todo);
             if (await _work.SaveChangesAsync() > 0)
-                return new ApiResponse { Result=todo, Status=true };
-            else return new ApiResponse { Message = "删除数据失败" };
+                return new ApiResponse(true, todo);
+            else return new ApiResponse("删除数据失败");
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 
@@ -113,11 +113,11 @@ public class ToDoService : IToDoService
                 pageIndex: parameter.PageIndex,
                 pageSize: parameter.PageSize,
                 orderBy: source => source.OrderByDescending(x => x.CreateDate));
-            return new ApiResponse { Result=todos, Status=true };
+            return new ApiResponse(true, todos);
         }
         catch (Exception e)
         {
-            return new ApiResponse { Message=e.Message };
+            return new ApiResponse(e.Message);
         }
     }
 }
