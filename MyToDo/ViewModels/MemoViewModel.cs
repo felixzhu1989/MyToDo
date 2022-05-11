@@ -179,7 +179,7 @@ public class MemoViewModel: NavigationViewModel
         if (memoResult.Status)
         {
             MemoDtos.Clear();
-            foreach (var item in memoResult.Result.Items)
+            foreach (var item in memoResult.Result!.Items)
             {
                 MemoDtos.Add(item);
             }

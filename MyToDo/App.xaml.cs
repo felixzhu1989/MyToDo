@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using DryIoc;
+using MyToDo.Common;
 using MyToDo.Service;
 using MyToDo.ViewModels;
 using MyToDo.Views;
@@ -17,6 +18,14 @@ public partial class App : PrismApplication
     {
         return Container.Resolve<MainView>();
     }
+
+    protected override void OnInitialized()
+    {
+        var service= App.Current.MainWindow!.DataContext as IConfigureService;
+        service!.Configure();
+        base.OnInitialized();
+    }
+
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
         //注册prism区域跳转导航页面
