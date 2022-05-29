@@ -13,10 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MaterialDesignThemes" Version="4.4.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.0-ci182" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
-    <PackageReference Include="RestSharp" Version="107.3.0" />
+    <PackageReference Include="RestSharp" Version="107.3.1-alpha.0.26" />
   </ItemGroup>
 
   <ItemGroup>

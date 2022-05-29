@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using MyToDo.Common;
+using MyToDo.Extensions;
 using MyToDo.Service;
 using MyToDo.Shared.Dtos;
 using MyToDo.Shared.Parameters;
@@ -11,9 +13,9 @@ using Prism.Regions;
 
 namespace MyToDo.ViewModels;
 
-public class MemoViewModel: NavigationViewModel
+public class MemoViewModel : NavigationViewModel
 {
-
+    private readonly IDialogHostService _dialogHost;
     public DelegateCommand<string> ExecuteCommand { get; }//根据提供的不同参数执行不同的逻辑
     public DelegateCommand<MemoDto> SelectedCommand { get; }
     public DelegateCommand<MemoDto> DeleteCommand { get; }
@@ -52,9 +54,10 @@ public class MemoViewModel: NavigationViewModel
     }
 
     private readonly IMemoService _service;
-    public MemoViewModel(IMemoService service, IContainerProvider containerProvider):base(containerProvider)
+    public MemoViewModel(IMemoService service, IContainerProvider containerProvider) : base(containerProvider)
     {
         _service = service;
+        _dialogHost=containerProvider.Resolve<IDialogHostService>();
         MemoDtos=new ObservableCollection<MemoDto>();
         ExecuteCommand = new DelegateCommand<string>(Execute);
         SelectedCommand = new DelegateCommand<MemoDto>(Selected);
@@ -155,13 +158,26 @@ public class MemoViewModel: NavigationViewModel
     /// <param name="obj"></param>
     private async void Delete(MemoDto obj)
     {
-        var deleteResult = await _service.DeleteAsync(obj.Id);
-        if (deleteResult.Status)
+        try
         {
-            var model = MemoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
-            if (model != null) MemoDtos.Remove(model);
+            var dialogResult = await _dialogHost.Question("温馨提示", $"确认删除待办事项：{obj.Title}?");
+            if (dialogResult.Result != Prism.Services.Dialogs.ButtonResult.OK) return;
+            UpdateLoading(true);
+            var deleteResult = await _service.DeleteAsync(obj.Id);
+            if (deleteResult.Status)
+            {
+                var model = MemoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
+                if (model != null) MemoDtos.Remove(model);
+            }
+        }
+
+        finally
+        {
+            UpdateLoading(false);
         }
     }
+
+
 
     private async void GetDataAsync()
     {

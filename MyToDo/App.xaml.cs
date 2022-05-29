@@ -3,7 +3,9 @@ using DryIoc;
 using MyToDo.Common;
 using MyToDo.Service;
 using MyToDo.ViewModels;
+using MyToDo.ViewModels.Dialogs;
 using MyToDo.Views;
+using MyToDo.Views.Dialogs;
 using Prism.DryIoc;
 using Prism.Ioc;
 
@@ -28,6 +30,16 @@ public partial class App : PrismApplication
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        //获取容器，然后注册HttpRestClient，并给构造函数设置默认值
+        containerRegistry.GetContainer()
+            .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "apiUrl"));
+        containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5263/", serviceKey: "apiUrl");
+        //注册服务
+        containerRegistry.Register<IToDoService, ToDoService>();
+        containerRegistry.Register<IMemoService, MemoService>();
+        //注册对话主机服务
+        containerRegistry.Register<IDialogHostService,DialogHostService>();
+
         //注册prism区域跳转导航页面
         containerRegistry.RegisterForNavigation<IndexView, IndexViewModel>(); 
         containerRegistry.RegisterForNavigation<ToDoView, ToDoViewModel>(); 
@@ -35,14 +47,11 @@ public partial class App : PrismApplication
         containerRegistry.RegisterForNavigation<SettingsView, SettingsViewModel>();
         containerRegistry.RegisterForNavigation<SkinView, SkinViewModel>();
         containerRegistry.RegisterForNavigation<AboutView>();//没有ViewModel的情形
-
-        //获取容器，然后注册HttpRestClient，并给构造函数设置默认值
-        containerRegistry.GetContainer()
-            .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "apiUrl"));
-        containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5263/", serviceKey: "apiUrl");
-        //注册服务
-        containerRegistry.Register<IToDoService,ToDoService>();
-        containerRegistry.Register<IMemoService,MemoService>();
-
+        
+        //注册弹窗
+        containerRegistry.RegisterForNavigation<AddToDoView,AddToDoViewModel>();
+        containerRegistry.RegisterForNavigation<AddMemoView,AddMemoViewModel>();
+        containerRegistry.RegisterForNavigation<MsgView,MsgViewModel>();
+        
     }
 }

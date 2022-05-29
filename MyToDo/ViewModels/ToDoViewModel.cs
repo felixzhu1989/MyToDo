@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using MyToDo.Common;
+using MyToDo.Extensions;
 using MyToDo.Service;
 using MyToDo.Shared.Dtos;
 using MyToDo.Shared.Parameters;
@@ -12,7 +14,7 @@ namespace MyToDo.ViewModels;
 
 public class ToDoViewModel : NavigationViewModel
 {
-
+    private readonly IDialogHostService _dialogHost;
     public DelegateCommand<string> ExecuteCommand { get; }//根据提供的不同参数执行不同的逻辑
     public DelegateCommand<ToDoDto> SelectedCommand { get; }
     public DelegateCommand<ToDoDto> DeleteCommand { get; }
@@ -64,6 +66,7 @@ public class ToDoViewModel : NavigationViewModel
     public ToDoViewModel(IToDoService service, IContainerProvider containerProvider) : base(containerProvider)
     {
         _service = service;
+        _dialogHost=containerProvider.Resolve<IDialogHostService>();
         ToDoDtos=new ObservableCollection<ToDoDto>();
         ExecuteCommand = new DelegateCommand<string>(Execute);
         SelectedCommand = new DelegateCommand<ToDoDto>(Selected);
@@ -166,11 +169,21 @@ public class ToDoViewModel : NavigationViewModel
     /// <param name="obj"></param>
     private async void Delete(ToDoDto obj)
     {
-        var deleteResult = await _service.DeleteAsync(obj.Id);
-        if (deleteResult.Status)
+        try
         {
-            var model = ToDoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
-            if (model != null) ToDoDtos.Remove(model);
+            var dialogResult = await _dialogHost.Question("温馨提示", $"确认删除待办事项：{obj.Title}?");
+            if (dialogResult.Result != Prism.Services.Dialogs.ButtonResult.OK) return;
+            UpdateLoading(true);
+            var deleteResult = await _service.DeleteAsync(obj.Id);
+            if (deleteResult.Status)
+            {
+                var model = ToDoDtos.FirstOrDefault(T => T.Id.Equals(obj.Id));
+                if (model != null) ToDoDtos.Remove(model);
+            }
+        }
+        finally 
+        {            
+            UpdateLoading(false); 
         }
     }
 

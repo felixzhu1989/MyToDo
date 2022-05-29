@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using MyToDo.Common;
 using MyToDo.Common.Models;
 using MyToDo.Shared.Dtos;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace MyToDo.ViewModels;
@@ -20,21 +22,51 @@ public class IndexViewModel:BindableBase
         set { toDoDtos = value; RaisePropertyChanged(); }
     }
     private ObservableCollection<MemoDto> memoDtos;
+    private readonly IDialogHostService _dialog;
+
     public ObservableCollection<MemoDto> MemoDtos
     {
         get => memoDtos;
         set { memoDtos = value; RaisePropertyChanged(); }
     }
-    public IndexViewModel()
-    {
+    public DelegateCommand<string> ExecuteCommand { get; } 
+
+    public IndexViewModel(IDialogHostService dialog)
+    {        
         TaskBars = new ObservableCollection<TaskBar>();
-        CreateTaskBars();
-        CreateTestData();
-    }
-    private void CreateTestData()
-    {
         ToDoDtos = new ObservableCollection<ToDoDto>();
         MemoDtos = new ObservableCollection<MemoDto>();
+        CreateTaskBars();
+        //CreateTestData();
+        ExecuteCommand=new DelegateCommand<string>(Execute);
+        _dialog=dialog;
+    }
+
+    private void Execute(string obj)
+    {
+        switch (obj)
+        {
+            case "AddToDo":
+                AddToDo();
+                break;
+            case "AddMemo":
+                AddMemo();
+                break;
+        }
+    }
+    void AddToDo()
+    {
+        _dialog.ShowDialog("AddToDoView",null);
+    }
+    void AddMemo()
+    {
+        _dialog.ShowDialog("AddMemoView", null);
+    }
+
+    private void CreateTestData()
+    {
+        //ToDoDtos = new ObservableCollection<ToDoDto>();
+        //MemoDtos = new ObservableCollection<MemoDto>();
         for (int i = 0; i < 5; i++)
         {
             ToDoDtos.Add(new ToDoDto{Title = $"待办{i}",Content = "正在处理中..."});

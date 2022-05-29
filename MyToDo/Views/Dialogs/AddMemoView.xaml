@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="MyToDo.Views.Dialogs.AddMemoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:MyToDo.Views.Dialogs"
+             mc:Ignorable="d"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Width="450"
+             Height="280">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="添加备忘"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Padding="20,10" />
+        <DockPanel Grid.Row="1"
+                   LastChildFill="False">            
+            <TextBox materialDesign:HintAssist.Hint="请输入备忘概要"
+                     DockPanel.Dock="Top"
+                     Margin="20,0" />
+            <TextBox materialDesign:HintAssist.Hint="请输入备忘内容"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     MinHeight="100"
+                     DockPanel.Dock="Top"
+                     Margin="20,10" />
+        </DockPanel>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Margin="20,10">
+            <Button Content="取消"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    Margin="0,0,10,0" />
+            <Button Content="确定"
+                    Command="{Binding SaveCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

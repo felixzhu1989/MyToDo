@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Wi3oHPT3l1IHaM/0i4RRNAdQvO3+a0offy+csV9wMzz+TerQ6yqWoxm3zTVvG14hB7oV9vCa7Q2vPHxtlWybuQ==",
+  "dgSpecHash": "SOXKHBp9SMG8akdW8FxJJ1B50MO+d7xEeuJtdUStPeoichgIJcDkTMrHZBZ+nbPnMI1iMgPhwE3mdJaIEX04bg==",
   "success": true,
-  "projectFilePath": "D:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj",
+  "projectFilePath": "E:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -14,25 +14,25 @@
           "lib/netstandard2.0/DryIoc.dll": {}
         }
       },
-      "MaterialDesignColors/2.0.5": {
+      "MaterialDesignColors/2.0.7-ci182": {
         "type": "package",
         "compile": {
-          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
+          "lib/net6.0/MaterialDesignColors.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
+          "lib/net6.0/MaterialDesignColors.dll": {}
         }
       },
-      "MaterialDesignThemes/4.4.0": {
+      "MaterialDesignThemes/4.6.0-ci182": {
         "type": "package",
         "dependencies": {
-          "MaterialDesignColors": "[2.0.5, 3.0.0)"
+          "MaterialDesignColors": "[2.0.7-ci182, 3.0.0)"
         },
         "compile": {
-          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {}
+          "lib/net6.0/MaterialDesignThemes.Wpf.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {}
+          "lib/net6.0/MaterialDesignThemes.Wpf.dll": {}
         },
         "build": {
           "build/MaterialDesignThemes.targets": {}
@@ -68,13 +68,13 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "Newtonsoft.Json/13.0.1": {
+      "Newtonsoft.Json/13.0.2-beta1": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/net6.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+          "lib/net6.0/Newtonsoft.Json.dll": {}
         }
       },
       "Prism.Core/8.1.97": {
@@ -118,7 +118,7 @@
           "Microsoft.WindowsDesktop.App.WPF"
         ]
       },
-      "RestSharp/107.3.0": {
+      "RestSharp/107.3.1-alpha.0.26": {
         "type": "package",
         "compile": {
           "lib/net6.0/RestSharp.dll": {}
@@ -269,26 +269,28 @@
         "readme.txt"
       ]
     },
-    "MaterialDesignColors/2.0.5": {
-      "sha512": "y5gEo4wo46CTiaTOiROPoKqTW5LJAu0g6b+yd0MslS3Fppu6hMheOIIkrmvvpFPbC4jbgAwakYYCzPKWbHC4LQ==",
+    "MaterialDesignColors/2.0.7-ci182": {
+      "sha512": "42fm4TiktKpqAkZegbPSWnEVNEWg/uBqEZPtAhIrrfgbuXlevOnqm58zNtQkawwP7eruoucnRdzRil5NSjg/3A==",
       "type": "package",
-      "path": "materialdesigncolors/2.0.5",
+      "path": "materialdesigncolors/2.0.7-ci182",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "images/MaterialDesignColors.Icon.png",
-        "lib/net452/MaterialDesignColors.dll",
-        "lib/net452/MaterialDesignColors.pdb",
+        "lib/net462/MaterialDesignColors.dll",
+        "lib/net462/MaterialDesignColors.pdb",
+        "lib/net6.0/MaterialDesignColors.dll",
+        "lib/net6.0/MaterialDesignColors.pdb",
         "lib/netcoreapp3.1/MaterialDesignColors.dll",
         "lib/netcoreapp3.1/MaterialDesignColors.pdb",
-        "materialdesigncolors.2.0.5.nupkg.sha512",
+        "materialdesigncolors.2.0.7-ci182.nupkg.sha512",
         "materialdesigncolors.nuspec"
       ]
     },
-    "MaterialDesignThemes/4.4.0": {
-      "sha512": "VdO8WvCYB6A6cDd181HLVgORn2IeNDMTlGxf2x91S1xsK6JYY3L1+WYxrkLJm4XEuvI0mY0biLM8MS6go+PQcw==",
+    "MaterialDesignThemes/4.6.0-ci182": {
+      "sha512": "5BO6hpxok6g6lx90lAeXYPw2bv5u/7i8IxdyDn5cAonT4hAkXYJAtVfsY1xIBBPNWZw3Trww4FoJ8+fg8uB/eA==",
       "type": "package",
-      "path": "materialdesignthemes/4.4.0",
+      "path": "materialdesignthemes/4.6.0-ci182",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -313,13 +315,16 @@
         "build/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
         "build/Resources/Roboto/RobotoCondensed-Regular.ttf",
         "images/MaterialDesignThemes.Icon.png",
-        "lib/net452/MaterialDesignThemes.Wpf.dll",
-        "lib/net452/MaterialDesignThemes.Wpf.pdb",
-        "lib/net452/MaterialDesignThemes.Wpf.xml",
+        "lib/net462/MaterialDesignThemes.Wpf.dll",
+        "lib/net462/MaterialDesignThemes.Wpf.pdb",
+        "lib/net462/MaterialDesignThemes.Wpf.xml",
+        "lib/net6.0/MaterialDesignThemes.Wpf.dll",
+        "lib/net6.0/MaterialDesignThemes.Wpf.pdb",
+        "lib/net6.0/MaterialDesignThemes.Wpf.xml",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.pdb",
         "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.xml",
-        "materialdesignthemes.4.4.0.nupkg.sha512",
+        "materialdesignthemes.4.6.0-ci182.nupkg.sha512",
         "materialdesignthemes.nuspec",
         "tools/VisualStudioToolsManifest.xml"
       ]
@@ -379,14 +384,15 @@
         "tools/Install.ps1"
       ]
     },
-    "Newtonsoft.Json/13.0.1": {
-      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+    "Newtonsoft.Json/13.0.2-beta1": {
+      "sha512": "lrHT3bmqM13QHvgtj2Y30BCRsq6lX07klW5tScx2B7ihqWeG6aVXrHxVALN34+boed9ybVtlRFLOuKD44Xuttg==",
       "type": "package",
-      "path": "newtonsoft.json/13.0.1",
+      "path": "newtonsoft.json/13.0.2-beta1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
+        "README.md",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.xml",
         "lib/net35/Newtonsoft.Json.dll",
@@ -395,13 +401,15 @@
         "lib/net40/Newtonsoft.Json.xml",
         "lib/net45/Newtonsoft.Json.dll",
         "lib/net45/Newtonsoft.Json.xml",
+        "lib/net6.0/Newtonsoft.Json.dll",
+        "lib/net6.0/Newtonsoft.Json.xml",
         "lib/netstandard1.0/Newtonsoft.Json.dll",
         "lib/netstandard1.0/Newtonsoft.Json.xml",
         "lib/netstandard1.3/Newtonsoft.Json.dll",
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.13.0.2-beta1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
@@ -484,10 +492,10 @@
         "readme.txt"
       ]
     },
-    "RestSharp/107.3.0": {
-      "sha512": "qu+A+VAnVLX3OeWVNm11UJz0aVErqSfYqIiOUbJM9x98uLymCOoL/oXRAjMb6XHra27WXxHmzy9EKEOKXWR6Pw==",
+    "RestSharp/107.3.1-alpha.0.26": {
+      "sha512": "ndkUy2YbjYKh4dcipFdLmljlbefX/H/hwSmSDEdKWUZDLh8WXcOW/VJlWGy5C700PTnplk5sg223F+sU0kfpRA==",
       "type": "package",
-      "path": "restsharp/107.3.0",
+      "path": "restsharp/107.3.1-alpha.0.26",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -497,7 +505,7 @@
         "lib/net6.0/RestSharp.xml",
         "lib/netstandard2.0/RestSharp.dll",
         "lib/netstandard2.0/RestSharp.xml",
-        "restsharp.107.3.0.nupkg.sha512",
+        "restsharp.107.3.1-alpha.0.26.nupkg.sha512",
         "restsharp.nuspec",
         "restsharp.png"
       ]
@@ -508,7 +516,6 @@
       "path": "system.io/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -589,7 +596,6 @@
       "path": "system.reflection/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -760,7 +766,6 @@
       "path": "system.reflection.primitives/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -817,7 +822,6 @@
       "path": "system.runtime/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -909,7 +913,6 @@
       "path": "system.text.encoding/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -977,7 +980,6 @@
       "path": "system.threading.tasks/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -1047,32 +1049,31 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "MaterialDesignThemes >= 4.4.0",
+      "MaterialDesignThemes >= 4.6.0-ci182",
       "MyToDo.Shared >= 1.0.0",
-      "Newtonsoft.Json >= 13.0.1",
+      "Newtonsoft.Json >= 13.0.2-beta1",
       "Prism.DryIoc >= 8.1.97",
-      "RestSharp >= 107.3.0"
+      "RestSharp >= 107.3.1-alpha.0.26"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\felix.zhu\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CSharp\\repos\\MyToDo\\MyToDo\\MyToDo.csproj",
+      "projectUniqueName": "E:\\CSharp\\repos\\MyToDo\\MyToDo\\MyToDo.csproj",
       "projectName": "MyToDo",
-      "projectPath": "D:\\CSharp\\repos\\MyToDo\\MyToDo\\MyToDo.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "D:\\CSharp\\repos\\MyToDo\\MyToDo\\obj\\",
+      "projectPath": "E:\\CSharp\\repos\\MyToDo\\MyToDo\\MyToDo.csproj",
+      "packagesPath": "C:\\Users\\felix.zhu\\.nuget\\packages\\",
+      "outputPath": "E:\\CSharp\\repos\\MyToDo\\MyToDo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\felix.zhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1080,14 +1081,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://packagesource": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj": {
-              "projectPath": "D:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj"
+            "E:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj": {
+              "projectPath": "E:\\CSharp\\repos\\MyToDo\\MyToDo.Shared\\MyToDo.Shared.csproj"
             }
           }
         }
@@ -1104,11 +1106,11 @@
         "dependencies": {
           "MaterialDesignThemes": {
             "target": "Package",
-            "version": "[4.4.0, )"
+            "version": "[4.6.0-ci182, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
-            "version": "[13.0.1, )"
+            "version": "[13.0.2-beta1, )"
           },
           "Prism.DryIoc": {
             "target": "Package",
@@ -1116,7 +1118,7 @@
           },
           "RestSharp": {
             "target": "Package",
-            "version": "[107.3.0, )"
+            "version": "[107.3.1-alpha.0.26, )"
           }
         },
         "imports": [
@@ -1137,7 +1139,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

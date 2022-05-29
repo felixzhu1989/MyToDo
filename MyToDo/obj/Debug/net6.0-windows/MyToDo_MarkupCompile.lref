@@ -1,11 +1,14 @@
 ﻿
-FD:\CSharp\repos\MyToDo\MyToDo\App.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\AboutView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\IndexView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\MainView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\MemoView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\ProcessView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\SettingsView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\SkinView.xaml;;
-FD:\CSharp\repos\MyToDo\MyToDo\Views\ToDoView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\App.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\AboutView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\Dialogs\AddMemoView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\Dialogs\AddToDoView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\IndexView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\MainView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\MemoView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\MsgView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\ProcessView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\SettingsView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\SkinView.xaml;;
+FE:\CSharp\repos\MyToDo\MyToDo\Views\ToDoView.xaml;;
 

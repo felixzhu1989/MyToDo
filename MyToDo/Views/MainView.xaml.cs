@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using MyToDo.Common;
 using MyToDo.Extensions;
 using Prism.Events;
 
@@ -10,8 +11,10 @@ namespace MyToDo.Views;
 /// </summary>
 public partial class MainView : Window
 {
-    public MainView(IEventAggregator aggregator)
+    private readonly IDialogHostService _dialogHost;
+    public MainView(IEventAggregator aggregator, IDialogHostService dialogHost)
     {
+        _dialogHost=dialogHost;
         InitializeComponent();
         //注册等待消息窗口
         aggregator.Register(arg =>
@@ -32,10 +35,16 @@ public partial class MainView : Window
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         };
-        BtnClose.Click += (s, e) => { Close(); };
+        BtnClose.Click += async(s, e) =>
+        {
+            var dialogResult =await _dialogHost.Question("温馨提示", $"确认退出系统吗?");
+            if (dialogResult.Result != Prism.Services.Dialogs.ButtonResult.OK) return;
+            Close();
+        };
         MenuBar.SelectionChanged += (s, e) =>
         {
             DrawerHost.IsLeftDrawerOpen = false;
         };
+
     }
 }

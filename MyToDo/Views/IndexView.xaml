@@ -100,6 +100,8 @@
                                FontSize="20"
                                FontWeight="Bold" />
                     <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            Command="{Binding ExecuteCommand}"
+                            CommandParameter="AddToDo"
                             DockPanel.Dock="Right"
                             VerticalAlignment="Top"
                             Width="30"
@@ -143,6 +145,8 @@
                                FontSize="20"
                                FontWeight="Bold" />
                     <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
+                            Command="{Binding ExecuteCommand}"
+                            CommandParameter="AddMemo"
                             DockPanel.Dock="Right"
                             VerticalAlignment="Top"
                             Width="30"

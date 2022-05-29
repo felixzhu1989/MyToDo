@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\
+E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\
 MyToDo
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\CSharp\repos\MyToDo\MyToDo\App.xaml
-8270336459
+E:\CSharp\repos\MyToDo\MyToDo\App.xaml
+11-1029546283
 
-33-1469436098
-2041251548079
-Views\AboutView.xaml;Views\IndexView.xaml;Views\MainView.xaml;Views\MemoView.xaml;Views\ProcessView.xaml;Views\SettingsView.xaml;Views\SkinView.xaml;Views\ToDoView.xaml;
+42627205444
+204888770710
+Views\AboutView.xaml;Views\Dialogs\AddMemoView.xaml;Views\Dialogs\AddToDoView.xaml;Views\IndexView.xaml;Views\MainView.xaml;Views\MemoView.xaml;Views\MsgView.xaml;Views\ProcessView.xaml;Views\SettingsView.xaml;Views\SkinView.xaml;Views\ToDoView.xaml;
 
 False
 

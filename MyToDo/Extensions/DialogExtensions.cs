@@ -1,11 +1,33 @@
 ﻿using System;
+using System.Threading.Tasks;
+using MyToDo.Common;
 using MyToDo.Common.Events;
 using Prism.Events;
+using Prism.Services.Dialogs;
 
 namespace MyToDo.Extensions;
 
 public static class DialogExtensions
 {
+    /// <summary>
+    /// 公共的询问窗口,扩展方法
+    /// </summary>
+    /// <param name="dialogHost">指定的dialoghost会话主机</param>
+    /// <param name="title">标题</param>
+    /// <param name="content">询问内容</param>
+    /// <param name="dialogHostName">唯一的会话主机名称</param>
+    /// <returns></returns>
+    public static async Task<IDialogResult> Question(this IDialogHostService dialogHost, string title, string content, string dialogHostName = "RootDialog")
+    {
+        DialogParameters param = new DialogParameters
+        {
+            { "Title", title },
+            { "Content", content },
+            { "dialogHostName", dialogHostName }
+        };
+        var dialogResult = await dialogHost.ShowDialog("MsgView", param, dialogHostName);
+        return dialogResult;
+    }
     /// <summary>
     /// 推送等待消息
     /// </summary>
@@ -20,7 +42,7 @@ public static class DialogExtensions
     /// </summary>
     /// <param name="aggregator"></param>
     /// <param name="action"></param>
-    public static void Register(this IEventAggregator aggregator,Action<UpdateModel>  action)
+    public static void Register(this IEventAggregator aggregator, Action<UpdateModel> action)
     {
         aggregator.GetEvent<UpdateLoadingEvent>().Subscribe(action);
     }
