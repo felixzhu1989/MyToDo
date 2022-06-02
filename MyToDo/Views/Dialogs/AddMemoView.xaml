@@ -19,11 +19,13 @@
                    FontSize="20"
                    Padding="20,10" />
         <DockPanel Grid.Row="1"
-                   LastChildFill="False">            
-            <TextBox materialDesign:HintAssist.Hint="请输入备忘概要"
+                   LastChildFill="False">
+            <TextBox Text="{Binding Model.Title}"
+                     materialDesign:HintAssist.Hint="请输入备忘概要"
                      DockPanel.Dock="Top"
                      Margin="20,0" />
-            <TextBox materialDesign:HintAssist.Hint="请输入备忘内容"
+            <TextBox Text="{Binding Model.Content}"
+                     materialDesign:HintAssist.Hint="请输入备忘内容"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"
                      MinHeight="100"
@@ -39,7 +41,7 @@
                     Style="{StaticResource MaterialDesignOutlinedButton}"
                     Margin="0,0,10,0" />
             <Button Content="确定"
-                    Command="{Binding SaveCommand}"/>
+                    Command="{Binding SaveCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

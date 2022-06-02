@@ -4,6 +4,7 @@ using MyToDo.Api.Context.UnitOfWork;
 using MyToDo.Shared;
 using MyToDo.Shared.Dtos;
 using MyToDo.Shared.Parameters;
+using System.Collections.ObjectModel;
 
 namespace MyToDo.Api.Service;
 
@@ -118,6 +119,32 @@ public class ToDoService : IToDoService
         catch (Exception e)
         {
             return new ApiResponse(e.Message);
+        }
+    }
+
+    public async Task<ApiResponse> Summary()
+    {
+        try
+        {
+            //待办事项结果，按照创建时间排序
+            var toDos = await _work.GetRepository<ToDo>().GetAllAsync(
+                orderBy: source => source.OrderByDescending(t => t.CreateDate));
+            //备忘结果，按照创建时间排序
+            var memos = await _work.GetRepository<Memo>().GetAllAsync(
+                orderBy: source => source.OrderByDescending(t => t.CreateDate));
+            SummaryDto summary = new();
+            summary.Sum=toDos.Count();//汇总待办事项数量
+            summary.CompletedCount=toDos.Where(t=>t.Status==1).Count();//统计完成待办事项数量
+            summary.CompletedRatio=(summary.CompletedCount/(double)summary.Sum).ToString("0%");//完成率
+            summary.MemoCount=memos.Count();//汇总备忘录数量
+            summary.ToDoDtos=new ObservableCollection<ToDoDto>(_mapper.Map<List<ToDoDto>>(toDos.Where(t => t.Status==0)));
+            summary.MemoDtos=new ObservableCollection<MemoDto>(_mapper.Map<List<MemoDto>>(memos));
+
+            return new ApiResponse(true,summary);
+        }
+        catch (Exception ex)
+        {
+            return new ApiResponse(false, "");
         }
     }
 }

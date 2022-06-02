@@ -147,12 +147,12 @@
                                                         <DataTrigger Binding="{Binding Status}"
                                                                      Value="0">
                                                             <Setter Property="Background"
-                                                                    Value="LimeGreen" />
+                                                                    Value="DodgerBlue" />
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding Status}"
                                                                      Value="1">
                                                             <Setter Property="Background"
-                                                                    Value="DodgerBlue" />
+                                                                    Value="LimeGreen" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>

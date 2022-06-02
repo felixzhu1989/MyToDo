@@ -8,4 +8,5 @@ namespace MyToDo.Service;
 public interface IToDoService:IBaseService<ToDoDto>
 {
     Task<ApiResponse<PagedList<ToDoDto>>> GetAllFilterAsync(ToDoParameter parameter);
+    Task<ApiResponse<SummaryDto>> SummaryAsync();
 }

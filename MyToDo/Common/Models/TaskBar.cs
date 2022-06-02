@@ -12,11 +12,16 @@ public class TaskBar:BindableBase
     /// <summary>
     /// 标题
     /// </summary>
-    public string Title { get; set; }
+    public string Title { get; set; }    
+    private string content;
     /// <summary>
     /// 内容
     /// </summary>
-    public string Content { get; set; }
+    public string Content
+    {
+        get { return content; }
+        set { content = value; RaisePropertyChanged(); }
+    }
     /// <summary>
     /// 颜色
     /// </summary>

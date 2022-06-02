@@ -7,7 +7,12 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:converter="clr-namespace:MyToDo.Common.Converters">
+    <UserControl.Resources>
+        <converter:IntToBoolConverter x:Key="intToBool" />
+    </UserControl.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -15,7 +20,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0"
-                   Text="您好xxx，今天是xxx"
+                   Text="{Binding Title}"
                    FontSize="22"
                    Margin="5" />
         <ItemsControl Grid.Row="1"
@@ -29,54 +34,59 @@
                 <DataTemplate>
                     <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn}">
                         <Border Background="{Binding Color}"
-                            Margin="5"
-                            CornerRadius="5">
-                        <Border.Style>
-                            <Style TargetType="Border">
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver"
-                                             Value="True">
-                                        <Setter Property="Effect">
-                                            <Setter.Value>
-                                                <DropShadowEffect Color="#DDDDDD"
-                                                                  ShadowDepth="1"
-                                                                  BlurRadius="5" />
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Grid>
-                            <StackPanel Margin="20,10">
-                                <materialDesign:PackIcon Kind="{Binding Icon}"
-                                                         Width="30"
-                                                         Height="30" />
-                                <TextBlock Text="{Binding Title}"
-                                           Margin="0,15"
-                                           FontSize="15" />
-                                <TextBlock Text="{Binding Content}"
-                                           FontWeight="Bold"
-                                           FontSize="30" />
-                            </StackPanel>
-                            <Canvas ClipToBounds="True">
-                                <Border Canvas.Top="10"
-                                        Canvas.Right="-50"
-                                        Width="120"
-                                        Height="120"
-                                        CornerRadius="100"
-                                        Background="#FFFFFF"
-                                        Opacity="0.1" />
-                                <Border Canvas.Top="80"
-                                        Canvas.Right="-30"
-                                        Width="120"
-                                        Height="120"
-                                        CornerRadius="100"
-                                        Background="#FFFFFF"
-                                        Opacity="0.1" />
-                            </Canvas>
-                        </Grid>
-                    </Border>
+                                Margin="5"
+                                CornerRadius="5">
+                            <Border.InputBindings>
+                                <MouseBinding MouseAction="LeftClick"
+                                              Command="{Binding DataContext.NavigateCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}" />
+                            </Border.InputBindings>
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <DropShadowEffect Color="#DDDDDD"
+                                                                      ShadowDepth="1"
+                                                                      BlurRadius="5" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Grid>
+                                <StackPanel Margin="20,10">
+                                    <materialDesign:PackIcon Kind="{Binding Icon}"
+                                                             Width="30"
+                                                             Height="30" />
+                                    <TextBlock Text="{Binding Title}"
+                                               Margin="0,15"
+                                               FontSize="15" />
+                                    <TextBlock Text="{Binding Content}"
+                                               FontWeight="Bold"
+                                               FontSize="30" />
+                                </StackPanel>
+                                <Canvas ClipToBounds="True">
+                                    <Border Canvas.Top="10"
+                                            Canvas.Right="-50"
+                                            Width="120"
+                                            Height="120"
+                                            CornerRadius="100"
+                                            Background="#FFFFFF"
+                                            Opacity="0.1" />
+                                    <Border Canvas.Top="80"
+                                            Canvas.Right="-30"
+                                            Width="120"
+                                            Height="120"
+                                            CornerRadius="100"
+                                            Background="#FFFFFF"
+                                            Opacity="0.1" />
+                                </Canvas>
+                            </Grid>
+                        </Border>
                     </materialDesign:TransitioningContent>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
@@ -109,15 +119,24 @@
                         <materialDesign:PackIcon Kind="Add" />
                     </Button>
                 </DockPanel>
-
-                <ListBox ItemsSource="{Binding ToDoDtos}"
+                <ListBox x:Name="todoList"
+                         ItemsSource="{Binding Summary.ToDoDtos}"
                          ScrollViewer.VerticalScrollBarVisibility="Hidden"
                          HorizontalContentAlignment="Stretch">
+                    <behavior:Interaction.Triggers>
+                        <behavior:EventTrigger EventName="MouseDoubleClick">
+                            <behavior:InvokeCommandAction Command="{Binding EditToDoCommand}"
+                                                          CommandParameter="{Binding ElementName=todoList,Path=SelectedItem}" />
+                        </behavior:EventTrigger>
+                    </behavior:Interaction.Triggers>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <DockPanel MaxHeight="80"
                                        LastChildFill="True">
-                                <ToggleButton DockPanel.Dock="Right" />
+                                <ToggleButton DockPanel.Dock="Right"
+                                              IsChecked="{Binding Status,Converter={StaticResource intToBool}}"
+                                              Command="{Binding DataContext.ToDoCompletedCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}" />
                                 <StackPanel>
                                     <TextBlock Text="{Binding Title}"
                                                FontSize="16"
@@ -154,9 +173,15 @@
                         <materialDesign:PackIcon Kind="Add" />
                     </Button>
                 </DockPanel>
-
-                <ListBox ItemsSource="{Binding MemoDtos}"
+                <ListBox x:Name="memoList"
+                         ItemsSource="{Binding Summary.MemoDtos}"
                          ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                    <behavior:Interaction.Triggers>
+                        <behavior:EventTrigger EventName="MouseDoubleClick">
+                            <behavior:InvokeCommandAction Command="{Binding EditMemoCommand}"
+                                                          CommandParameter="{Binding ElementName=memoList,Path=SelectedItem}" />
+                        </behavior:EventTrigger>
+                    </behavior:Interaction.Triggers>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel MaxHeight="80">

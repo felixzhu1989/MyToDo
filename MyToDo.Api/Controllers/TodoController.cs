@@ -24,6 +24,9 @@ public class TodoController:ControllerBase
     public async Task<ApiResponse> GetAll([FromQuery] QueryParameter param) => await _service.GetAllAsync(param);
 
     [HttpGet]
+    public async Task<ApiResponse> Summary() => await _service.Summary();
+
+    [HttpGet]
     public async Task<ApiResponse> GetAllFilter([FromQuery] ToDoParameter param) => await _service.GetAllFilterAsync(param);
 
     [HttpPost]

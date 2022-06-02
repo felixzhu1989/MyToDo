@@ -16,11 +16,21 @@ public class ToDoService:BaseService<ToDoDto>,IToDoService
 
     public async Task<ApiResponse<PagedList<ToDoDto>>> GetAllFilterAsync(ToDoParameter parameter)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Get,
             Route = $"api/ToDo/GetAllFilter?PageIndex={parameter.PageIndex}&PageSize={parameter.PageSize}&Search={parameter.Search}&Status={parameter.Status}"
         };
         return await _client.ExecuteAsync<PagedList<ToDoDto>>(request);
+    }
+
+    public async Task<ApiResponse<SummaryDto>> SummaryAsync()
+    {
+        BaseRequest request = new()
+        {
+            Method = RestSharp.Method.Get,
+            Route = $"api/ToDo/Summary"
+        };
+        return await _client.ExecuteAsync<SummaryDto>(request);
     }
 }

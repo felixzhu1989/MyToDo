@@ -116,7 +116,7 @@
                                         </materialDesign:PopupBox>
                                         <Border Grid.Row="0"
                                                 Grid.RowSpan="2"
-                                                Background="DodgerBlue"
+                                                Background="Orange"
                                                 CornerRadius="5" />
                                         <TextBlock Grid.Row="0"
                                                    Text="{Binding Title}"

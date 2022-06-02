@@ -221,6 +221,10 @@ public class ToDoViewModel : NavigationViewModel
     public override void OnNavigatedTo(NavigationContext navigationContext)
     {
         base.OnNavigatedTo(navigationContext);
+        if (navigationContext.Parameters.ContainsKey("Value"))
+            SelectedIndex= navigationContext.Parameters.GetValue<int>("Value");
+        else
+            SelectedIndex=0;
         GetDataAsync();
     }
 }
