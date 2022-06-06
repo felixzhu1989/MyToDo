@@ -87,18 +87,27 @@ public class IndexViewModel : NavigationViewModel
 
     private async void Completed(ToDoDto obj)
     {
-        var updateResult = await _toDoService.UpdateAsync(obj);//修改数据
-        if (updateResult.Status)
+        try
         {
-           var todo= Summary.ToDoDtos.FirstOrDefault(t => t.Id.Equals(obj.Id));
-            if (todo!=null)
+            UpdateLoading(true);
+            var updateResult = await _toDoService.UpdateAsync(obj);//修改数据
+            if (updateResult.Status)
             {
-                Summary.ToDoDtos.Remove(todo);//从界面列表删除
-                Summary.CompletedCount++;
-                Summary.CompletedRatio=(Summary.CompletedCount/(double)Summary.Sum).ToString("0%");
-                Refresh();
+                var todo = Summary.ToDoDtos.FirstOrDefault(t => t.Id.Equals(obj.Id));
+                if (todo!=null)
+                {
+                    Summary.ToDoDtos.Remove(todo);//从界面列表删除
+                    Summary.CompletedCount++;
+                    Summary.CompletedRatio=(Summary.CompletedCount/(double)Summary.Sum).ToString("0%");
+                    Refresh();
+                }
+                _aggregator.SendMessage("待办事项已完成！");
             }
         }
+        finally
+        {
+            UpdateLoading(false);
+        }        
     }
 
     private void Execute(string obj)
@@ -124,33 +133,41 @@ public class IndexViewModel : NavigationViewModel
         var dialogResult = await _dialog.ShowDialog("AddToDoView", param);
         if (dialogResult.Result==ButtonResult.OK)
         {
-            var toDo = dialogResult.Parameters.GetValue<ToDoDto>("Value");
-            if (toDo.Id>0)
+            try
             {
-                //修改
-                var updateResult = await _toDoService.UpdateAsync(toDo);
-                if (updateResult.Status)
+                UpdateLoading(true);
+                var toDo = dialogResult.Parameters.GetValue<ToDoDto>("Value");
+                if (toDo.Id>0)
                 {
-                    var toDoModel = Summary.ToDoDtos.FirstOrDefault(t => t.Id.Equals(toDo.Id));
-                    if (toDoModel!=null)
+                    //修改
+                    var updateResult = await _toDoService.UpdateAsync(toDo);
+                    if (updateResult.Status)
                     {
-                        toDoModel.Title=toDo.Title;
-                        toDoModel.Content=toDo.Content;
+                        var toDoModel = Summary.ToDoDtos.FirstOrDefault(t => t.Id.Equals(toDo.Id));
+                        if (toDoModel!=null)
+                        {
+                            toDoModel.Title=toDo.Title;
+                            toDoModel.Content=toDo.Content;
+                        }
+                    }
+                }
+                else
+                {
+                    //新增
+                    var addResult = await _toDoService.AddAsync(toDo);
+                    if (addResult.Status)
+                    {
+                        Summary.ToDoDtos.Add(addResult.Result!);//界面显示
+                        Summary.Sum++;
+                        Summary.CompletedRatio=(Summary.CompletedCount/(double)Summary.Sum).ToString("0%");
+                        Refresh();
                     }
                 }
             }
-            else
+            finally
             {
-                //新增
-                var addResult = await _toDoService.AddAsync(toDo);
-                if (addResult.Status)
-                {
-                    Summary.ToDoDtos.Add(addResult.Result!);//界面显示
-                    Summary.Sum++;
-                    Summary.CompletedRatio=(Summary.CompletedCount/(double)Summary.Sum).ToString("0%");
-                    Refresh();
-                }
-            }
+                UpdateLoading(false);
+            }            
         }
     }
     /// <summary>
@@ -163,31 +180,39 @@ public class IndexViewModel : NavigationViewModel
         var dialogResult = await _dialog.ShowDialog("AddMemoView", param);
         if (dialogResult.Result==ButtonResult.OK)
         {
-            var memo = dialogResult.Parameters.GetValue<MemoDto>("Value");
-            if (memo.Id>0)
+            try
             {
-                //修改
-                var updateResult = await _memoService.UpdateAsync(memo);
-                if (updateResult.Status)
+                UpdateLoading(true);
+                var memo = dialogResult.Parameters.GetValue<MemoDto>("Value");
+                if (memo.Id>0)
                 {
-                    var memoModel = Summary.MemoDtos.FirstOrDefault(t => t.Id.Equals(memo.Id));
-                    if (memoModel!=null)
+                    //修改
+                    var updateResult = await _memoService.UpdateAsync(memo);
+                    if (updateResult.Status)
                     {
-                        memoModel.Title=memo.Title;
-                        memoModel.Content=memo.Content;
+                        var memoModel = Summary.MemoDtos.FirstOrDefault(t => t.Id.Equals(memo.Id));
+                        if (memoModel!=null)
+                        {
+                            memoModel.Title=memo.Title;
+                            memoModel.Content=memo.Content;
+                        }
+                    }
+                }
+                else
+                {
+                    //新增
+                    var addResult = await _memoService.AddAsync(memo);
+                    if (addResult.Status)
+                    {
+                        Summary.MemoDtos.Add(addResult.Result!);
+                        Summary.MemoCount++;
+                        Refresh();
                     }
                 }
             }
-            else
+            finally
             {
-                //新增
-                var addResult = await _memoService.AddAsync(memo);
-                if (addResult.Status)
-                {
-                    Summary.MemoDtos.Add(addResult.Result!);
-                    Summary.MemoCount++;
-                    Refresh();
-                }
+                UpdateLoading(false);
             }
         }
     }

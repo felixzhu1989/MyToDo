@@ -10,7 +10,7 @@ public class NavigationViewModel:BindableBase,INavigationAware
 {
     private readonly IContainerProvider _containerProvider;
     //事件聚合器
-    private readonly IEventAggregator _aggregator;
+    public readonly IEventAggregator _aggregator;
 
     public NavigationViewModel(IContainerProvider containerProvider)
     {

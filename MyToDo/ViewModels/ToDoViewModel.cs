@@ -149,7 +149,7 @@ public class ToDoViewModel : NavigationViewModel
                 if (addResult.Status)
                 {
                     //更新界面显示
-                    ToDoDtos.Add(addResult.Result);
+                    ToDoDtos.Add(addResult.Result!);
                 }
             }
         }

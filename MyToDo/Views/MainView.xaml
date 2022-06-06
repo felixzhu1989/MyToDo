@@ -26,8 +26,7 @@
 
     <materialDesign:DialogHost x:Name="DialogHost"
                                Identifier="RootDialog"
-                               DialogTheme="Inherit"
-                               SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}">
+                               DialogTheme="Inherit">
 
         <materialDesign:DrawerHost x:Name="DrawerHost"
                                    IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
@@ -72,9 +71,14 @@
 
                 </DockPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
-
-            <DockPanel>
-
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <materialDesign:Snackbar x:Name="Snackbar"
+                                         MessageQueue="{materialDesign:MessageQueue}" 
+                                         Panel.ZIndex="1"/>
                 <materialDesign:ColorZone x:Name="ColorZone"
                                           Padding="16"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth2"
@@ -108,7 +112,6 @@
                                           Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                                           IsChecked="False"
                                           AutomationProperties.Name="HamburgerToggleButton" />
-
                             <Button Margin="24,0,0,0"
                                     ToolTip="Previous Item"
                                     Command="{Binding GoBackCommand }"
@@ -116,7 +119,6 @@
                                     Style="{StaticResource MaterialDesignToolButton}"
                                     Foreground="{Binding RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}, Path=(TextElement.Foreground)}"
                                     materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}" />
-
                             <Button Margin="16,0,0,0"
                                     ToolTip="Next Item"
                                     Command="{Binding GoForwardCommand  }"
@@ -130,16 +132,11 @@
                                        Margin="16,0"
                                        AutomationProperties.Name="MyToDo"
                                        Text="MyToDo" />
-
                         </StackPanel>
-
-
                     </DockPanel>
                 </materialDesign:ColorZone>
-
-                <ContentControl prism:RegionManager.RegionName="{x:Static extensions:PrismManager.MainViewRegionName}" />
-
-            </DockPanel>
+                <ContentControl Grid.Row="1" prism:RegionManager.RegionName="{x:Static extensions:PrismManager.MainViewRegionName}" />
+            </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
 </Window>

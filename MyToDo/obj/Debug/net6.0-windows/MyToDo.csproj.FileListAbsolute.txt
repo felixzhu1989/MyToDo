@@ -102,3 +102,6 @@ E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\Dialogs\AddMemoView
 E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\Dialogs\AddToDoView.baml
 E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MsgView.g.cs
 E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\MsgView.baml
+E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\Dialogs\LoginView.g.cs
+E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\Views\Dialogs\LoginView.baml
+E:\CSharp\repos\MyToDo\MyToDo\obj\Debug\net6.0-windows\MyToDo_Content.g.cs

@@ -5,11 +5,17 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Bilibili.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\login.png" />
     <None Remove="Images\user.jpg" />
     <None Remove="Images\wind.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Bilibili.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\login.png" />
     <Resource Include="Images\user.jpg" />
     <Resource Include="Images\wind.png" />
   </ItemGroup>

@@ -15,9 +15,9 @@ public class LoginController:ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public async Task<ApiResponse> Login(string account, string password) =>
-        await _service.LoginAsync(account, password);
+    [HttpPost]
+    public async Task<ApiResponse> Login([FromBody] UserDto user) =>
+        await _service.LoginAsync(user.Account, user.Password);
 
     [HttpPost]
     public async Task<ApiResponse> Register([FromBody] UserDto user) => await _service.RegisterAsync(user);

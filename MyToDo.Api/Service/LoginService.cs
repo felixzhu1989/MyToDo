@@ -3,6 +3,7 @@ using MyToDo.Api.Context;
 using MyToDo.Api.Context.UnitOfWork;
 using MyToDo.Shared;
 using MyToDo.Shared.Dtos;
+using MyToDo.Shared.Extensions;
 
 namespace MyToDo.Api.Service;
 public class LoginService : ILoginService
@@ -20,6 +21,7 @@ public class LoginService : ILoginService
     {
         try
         {
+           password=   password.GetMD5();
             var model = await _repository.GetFirstOrDefaultAsync(predicate: u =>
                   u.Account.Equals(account) && u.Password.Equals(password));
             if (model == null)
@@ -44,6 +46,7 @@ public class LoginService : ILoginService
             if (dbUser != null)
                 return new ApiResponse($"账号:{model.Account}已存在，请重新注册");
             model.CreateDate=DateTime.Now;
+            model.Password=model.Password.GetMD5();
             await _repository.InsertAsync(model);
             if (await _work.SaveChangesAsync()>0)
                 return new ApiResponse(true, model);
