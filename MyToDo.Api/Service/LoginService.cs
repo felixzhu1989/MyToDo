@@ -21,13 +21,12 @@ public class LoginService : ILoginService
     {
         try
         {
-           password=   password.GetMD5();
+            password= password.GetMD5();
             var model = await _repository.GetFirstOrDefaultAsync(predicate: u =>
                   u.Account.Equals(account) && u.Password.Equals(password));
             if (model == null)
                 return new ApiResponse("账号或密码错误，请重试");
             else return new ApiResponse(true, model);
-
         }
         catch (Exception e)
         {
@@ -40,7 +39,6 @@ public class LoginService : ILoginService
         try
         {
             var model = _mapper.Map<User>(user);
-
             var dbUser = await _repository.GetFirstOrDefaultAsync(predicate: u =>
                 u.Account.Equals(model.Account));
             if (dbUser != null)

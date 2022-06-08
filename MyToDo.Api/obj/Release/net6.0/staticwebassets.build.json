@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9mlbxrTKtChOajINX+dBN+FaVvTO7NolFyFhYg4AuJg=",
+  "Source": "MyToDo.Api",
+  "BasePath": "_content/MyToDo.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -114,3 +114,4 @@ E:\CSharp\repos\MyToDo\MyToDo.Api\obj\Debug\net6.0\refint\MyToDo.Api.dll
 E:\CSharp\repos\MyToDo\MyToDo.Api\obj\Debug\net6.0\MyToDo.Api.pdb
 E:\CSharp\repos\MyToDo\MyToDo.Api\obj\Debug\net6.0\MyToDo.Api.genruntimeconfig.cache
 E:\CSharp\repos\MyToDo\MyToDo.Api\obj\Debug\net6.0\ref\MyToDo.Api.dll
+E:\CSharp\repos\MyToDo\MyToDo.Api\bin\Debug\net6.0\todo.db

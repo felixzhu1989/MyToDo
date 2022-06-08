@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using DryIoc;
 using MyToDo.Common;
 using MyToDo.Service;
@@ -29,13 +30,29 @@ public partial class App : PrismApplication
         {
             if(callback.Result!=ButtonResult.OK)
             {
-                Application.Current.Shutdown();
+                Environment.Exit(0);
                 return;
             }
-            var service = App.Current.MainWindow!.DataContext as IConfigureService;
+            var service = Current.MainWindow!.DataContext as IConfigureService;
             service!.Configure();
             base.OnInitialized();
         });        
+    }
+
+    public static void Logout(IContainerProvider container)
+    {
+        //首页隐藏，显示登录界面，登录成功后刷新数据
+        Current.MainWindow.Hide();
+        var dialog = container.Resolve<IDialogService>();
+        dialog.ShowDialog("LoginView", callback =>
+        {
+            if (callback.Result!=ButtonResult.OK)
+            {
+                Environment.Exit(0);
+                return;
+            }
+            Current.MainWindow.Show();            
+        });
     }
 
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -43,7 +60,8 @@ public partial class App : PrismApplication
         //获取容器，然后注册HttpRestClient，并给构造函数设置默认值
         containerRegistry.GetContainer()
             .Register<HttpRestClient>(made: Parameters.Of.Type<string>(serviceKey: "apiUrl"));
-        containerRegistry.GetContainer().RegisterInstance(@"http://localhost:5263/", serviceKey: "apiUrl");
+        //发布WebApi后修改修改这个配置链接
+        containerRegistry.GetContainer().RegisterInstance(@"http://10.9.18.31:2333/", serviceKey: "apiUrl");
         //注册服务
         containerRegistry.Register<IToDoService, ToDoService>();
         containerRegistry.Register<IMemoService, MemoService>();

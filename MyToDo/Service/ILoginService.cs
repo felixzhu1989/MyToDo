@@ -4,6 +4,6 @@ using System.Threading.Tasks;
 namespace MyToDo.Service;
 public interface ILoginService
 {
-    Task<ApiResponse> LoginAsync(UserDto user);
-    Task<ApiResponse> RegisterAsync(UserDto user);
+    Task<ApiResponse<UserDto>> LoginAsync(UserDto user);
+    Task<ApiResponse<UserDto>> RegisterAsync(UserDto user);
 }

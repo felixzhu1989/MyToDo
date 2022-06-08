@@ -3,9 +3,7 @@ using System.Threading.Tasks;
 using MyToDo.Shared;
 using Newtonsoft.Json;
 using RestSharp;
-
 namespace MyToDo.Service;
-
 public class HttpRestClient
 {
     private readonly string _apiUrl;
@@ -24,7 +22,10 @@ public class HttpRestClient
         //传递的参数
         if (baseRequest.Parameter != null) request.AddJsonBody(baseRequest.Parameter);
         var response = await _client.ExecuteAsync(request);
-        return JsonConvert.DeserializeObject<ApiResponse>(response.Content!)!;
+        if (response.StatusCode==System.Net.HttpStatusCode.OK)
+            return JsonConvert.DeserializeObject<ApiResponse>(response.Content!)!;        
+        else        
+            return new ApiResponse(response.ErrorMessage!); 
     }
     public async Task<ApiResponse<T>> ExecuteAsync<T>(BaseRequest baseRequest)
     {
@@ -35,6 +36,9 @@ public class HttpRestClient
         if (baseRequest.Parameter != null) request.AddJsonBody(baseRequest.Parameter);
 
         var response = await _client.ExecuteAsync(request);
-        return JsonConvert.DeserializeObject<ApiResponse<T>>(response.Content!)!;
+        if (response.StatusCode==System.Net.HttpStatusCode.OK)
+            return JsonConvert.DeserializeObject<ApiResponse<T>>(response.Content!)!;
+        else
+            return new ApiResponse<T>() {Message=response.ErrorMessage,Status=false };
     }
 }

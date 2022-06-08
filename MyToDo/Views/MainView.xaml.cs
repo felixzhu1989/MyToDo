@@ -19,8 +19,8 @@ public partial class MainView : Window
         //注册snackbar提示消息
         aggregator.RegisterMessage(arg =>
         {
-            Snackbar.MessageQueue!.Enqueue(arg);//往消息队列中添加消息
-        });
+            Snackbar.MessageQueue!.Enqueue(arg.Message);//往消息队列中添加消息
+        }, "Main");
 
         //注册等待消息窗口
         aggregator.Register(arg =>

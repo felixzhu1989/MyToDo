@@ -17,7 +17,7 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
 
     public async Task<ApiResponse<TEntity>> AddAsync(TEntity entity)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Post,
             Route = $"api/{_serviceName}/Add",
@@ -28,7 +28,7 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
 
     public async Task<ApiResponse<TEntity>> UpdateAsync(TEntity entity)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Post,
             Route = $"api/{_serviceName}/Update",
@@ -39,7 +39,7 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
 
     public async Task<ApiResponse<TEntity>> DeleteAsync(int id)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Delete,
             Route = $"api/{_serviceName}/Delete?id={id}"
@@ -49,7 +49,7 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
 
     public async Task<ApiResponse<TEntity>> GetFirstOrDefault(int id)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Get,
             Route = $"api/{_serviceName}/Get?id={id}"
@@ -59,7 +59,7 @@ public class BaseService<TEntity>:IBaseService<TEntity> where TEntity:class
 
     public async Task<ApiResponse<PagedList<TEntity>>> GetAllAsync(QueryParameter parameter)
     {
-        BaseRequest request = new BaseRequest
+        BaseRequest request = new()
         {
             Method = RestSharp.Method.Get,
             Route = $"api/{_serviceName}/GetAll?PageIndex={parameter.PageIndex}&PageSize={parameter.PageSize}&Search={parameter.Search}"

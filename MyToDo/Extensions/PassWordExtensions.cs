@@ -1,49 +1,33 @@
-﻿using Microsoft.Xaml.Behaviors;
+﻿
 using System.Windows;
 using System.Windows.Controls;
-
 namespace MyToDo.Extensions;
-public class PassWordExtensions
+public class PasswordExtensions
 {
-    //附加属性
-    public static readonly DependencyProperty PassWordProperty = DependencyProperty.RegisterAttached("PassWord", typeof(string), typeof(PassWordExtensions), new PropertyMetadata(string.Empty,OnPassWordPropertyChanged));
-    public static void OnPassWordPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs  e)
+    //propa附加属性，让PasswordBox支持绑定
+    public static string GetPassword(DependencyObject obj)
     {
-        var passWord = sender as PasswordBox;
-        string passWordStr = (string)e.NewValue;
-        if(passWord!=null&&passWord.Password!= passWordStr)
+        return (string)obj.GetValue(PasswordProperty);
+    }
+    public static void SetPassword(DependencyObject obj, string value)
+    {
+        obj.SetValue(PasswordProperty, value);
+    }
+    // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty PasswordProperty =
+        DependencyProperty.RegisterAttached("Password", typeof(string), typeof(PasswordExtensions), new PropertyMetadata(string.Empty, OnPasswordPropertyChanged));
+    /// <summary>
+    /// 依赖属性变更时的操作
+    /// </summary>
+    /// <param name="sender">依赖对象</param>
+    /// <param name="e">事件接收对象</param>
+    static void OnPasswordPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+    {
+        var passwordBox = sender as PasswordBox;
+        string passwordStr = (string)e.NewValue;
+        if (passwordBox != null && passwordBox.Password!=passwordStr)
         {
-            passWord.Password=passWordStr;
-        }
-    }    
-    public static string GetPassWord(DependencyObject obj)
-    {
-        return (string)obj.GetValue(PassWordProperty);
-    }
-    public static void SetPassWord(DependencyObject obj, string value)
-    {
-        obj.SetValue(PassWordProperty,value);
-    }
-}
-public class PassWordBehavior : Behavior<PasswordBox>
-{
-    protected override void OnAttached()
-    {
-        base.OnAttached();
-        AssociatedObject.PasswordChanged+=AssociatedObject_PasswordChanged;
-    }
-    protected override void OnDetaching()
-    {
-        base.OnDetaching();
-        AssociatedObject.PasswordChanged-=AssociatedObject_PasswordChanged;
-    }
-    private void AssociatedObject_PasswordChanged(object sender, RoutedEventArgs e)
-    {
-        PasswordBox passwordBox = sender as PasswordBox;
-        string password = PassWordExtensions.GetPassWord(passwordBox!);
-        if(password!=null && passwordBox!.Password!=password)
-        {
-            PassWordExtensions.SetPassWord(passwordBox,password);
+            passwordBox.Password=passwordStr;//重新给PasswordBox的Password属性赋值
         }
     }
 }

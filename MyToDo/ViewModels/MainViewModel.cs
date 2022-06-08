@@ -3,6 +3,7 @@ using MyToDo.Common;
 using MyToDo.Common.Models;
 using MyToDo.Extensions;
 using Prism.Commands;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Regions;
 
@@ -10,6 +11,7 @@ namespace MyToDo.ViewModels;
 public class MainViewModel : BindableBase,IConfigureService
 {
     private readonly IRegionManager _regionManager;
+    private readonly IContainerProvider _container;
     private IRegionNavigationJournal _journal;
     private ObservableCollection<MenuBar> menuBars;
     public ObservableCollection<MenuBar> MenuBars
@@ -17,13 +19,20 @@ public class MainViewModel : BindableBase,IConfigureService
         get => menuBars;
         set { menuBars = value; RaisePropertyChanged(); }
     }
+    private string userName;
+    public string UserName
+    {
+        get { return userName; }
+        set { userName = value;RaisePropertyChanged(); }
+    }
     public DelegateCommand<MenuBar> NavigateCommand { get;}
     public DelegateCommand GoBackCommand { get;}
     public DelegateCommand GoForwardCommand { get;}
-
-    public MainViewModel(IRegionManager regionManager)
+    public DelegateCommand LogoutCommand { get; }
+    public MainViewModel(IRegionManager regionManager, IContainerProvider container)
     {
         _regionManager = regionManager;
+        _container=container;        
         MenuBars = new ObservableCollection<MenuBar>();
         NavigateCommand = new DelegateCommand<MenuBar>(Navigate);
         GoBackCommand = new DelegateCommand(() =>
@@ -34,6 +43,7 @@ public class MainViewModel : BindableBase,IConfigureService
         {
             if (_journal is { CanGoForward: true }) _journal.GoForward();
         });
+        LogoutCommand=new DelegateCommand(() => { App.Logout(_container); });//注销登录
     }
 
     private void Navigate(MenuBar? obj)
@@ -61,6 +71,7 @@ public class MainViewModel : BindableBase,IConfigureService
     public void Configure()
     {
         CreateMenuBar();
+        UserName=AppSession.UserName;        
         _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("IndexView");
     }
 }

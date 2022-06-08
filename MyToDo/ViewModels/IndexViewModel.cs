@@ -71,7 +71,7 @@ public class IndexViewModel : NavigationViewModel
         EditMemoCommand=new DelegateCommand<MemoDto>(AddMemo);
         ToDoCompletedCommand=new DelegateCommand<ToDoDto>(Completed);
         NavigateCommand=new DelegateCommand<TaskBar>(Navigate);
-        Title=$"您好，宏峰!今天是{DateTime.Now.GetDateTimeFormats('D')[1]}。";
+        Title=$"您好，{AppSession.UserName}!今天是{DateTime.Now.GetDateTimeFormats('D')[1]}。";
     }
 
     private void Navigate(TaskBar obj)

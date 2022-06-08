@@ -78,7 +78,7 @@ namespace MyToDo.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyToDo;V1.0.0.0;component/views/indexview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyToDo;component/views/indexview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\IndexView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
