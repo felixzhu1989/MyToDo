@@ -77,7 +77,7 @@ namespace MyToDo.Views.Dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyToDo;component/views/dialogs/loginview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyToDo;V1.0.0.0;component/views/dialogs/loginview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Dialogs\LoginView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

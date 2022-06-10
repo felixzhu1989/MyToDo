@@ -53,7 +53,7 @@ namespace MyToDo.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyToDo;component/views/processview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyToDo;V1.0.0.0;component/views/processview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ProcessView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
